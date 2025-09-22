@@ -1,0 +1,6 @@
+-std=c++20
+-I/opt/homebrew/include
+-Isrc
+-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+-DGL_SILENCE_DEPRECATION
+-DGLFW_INCLUDE_GLCOREARB

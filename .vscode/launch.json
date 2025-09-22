@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug (lldb)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/build/app",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "MIMode": "lldb",
+      "miDebuggerPath": "lldb",
+      "preLaunchTask": "build-with-cc",
+      "externalConsole": false
+    },
+    {
+      "name": "Runner Debug (outDebug)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/build/Debug/outDebug",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "runner-build-all"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder}/src",
+      "program": "${workspaceFolder}/src/build/Debug/outDebug"
+    }
+  ]
+}
