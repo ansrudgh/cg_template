@@ -24,6 +24,7 @@
     "@${workspaceFolder}/compile_flags.txt"
   ],
   "C_Cpp_Runner.linkerArgs": [
+    "${workspaceFolder}/src/j3a.cpp",
     "-L/opt/homebrew/lib",
     "-Wl,-rpath,/opt/homebrew/lib",
     "-lglfw",
@@ -87,4 +88,9 @@
     "**/.vscode/**"
   ],
   "C_Cpp_Runner.msvcSecureNoWarnings": false
+  ,
+  "C_Cpp_Runner.runInTerminal": true,
+  "C_Cpp_Runner.cwd": "${workspaceFolder}",
+  "C_Cpp_Runner.buildDirectory": "${workspaceFolder}/build/Debug",
+  "C_Cpp_Runner.enableSanitizers": false
 }

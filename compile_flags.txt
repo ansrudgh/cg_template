@@ -4,3 +4,5 @@
 -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
 -DGL_SILENCE_DEPRECATION
 -DGLFW_INCLUDE_GLCOREARB
+-Wno-sign-conversion
+-Wno-error=sign-conversion

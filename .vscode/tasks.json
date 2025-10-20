@@ -10,9 +10,31 @@
         "cwd": "${workspaceFolder}"
       },
       "group": {
-        "kind": "build",
-        "isDefault": true
+        "kind": "build"
       },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "runner-ensure-debug-dir",
+      "type": "shell",
+      "command": "mkdir",
+      "args": ["-p", "${workspaceFolder}/src/build/Debug"],
+      "problemMatcher": []
+    },
+    {
+      "label": "runner-build-glob",
+      "type": "shell",
+      "dependsOn": ["runner-ensure-debug-dir"],
+      "command": "clang++",
+      "args": [
+        "@${workspaceFolder}/compile_flags.txt",
+        "-Wall","-Wextra","-Wpedantic","-Wshadow","-Wformat=2","-Wcast-align","-Wconversion","-Wsign-conversion","-Wnull-dereference",
+        "${workspaceFolder}/src/*.cpp",
+        "-o","${workspaceFolder}/src/build/Debug/outDebug",
+        "-L/opt/homebrew/lib","-Wl,-rpath,/opt/homebrew/lib","-lglfw",
+        "-framework","OpenGL","-framework","Cocoa","-framework","IOKit","-framework","CoreVideo"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
       "problemMatcher": ["$gcc"]
     },
     {
@@ -40,11 +62,22 @@
       "options": { "cwd": "${workspaceFolder}" }
     },
     {
+      "label": "runner-build-j3a",
+      "type": "shell",
+      "command": "clang++",
+      "args": [
+        "@${workspaceFolder}/compile_flags.txt",
+        "-Wall","-Wextra","-Wpedantic","-Wshadow","-Wformat=2","-Wcast-align","-Wconversion","-Wsign-conversion","-Wnull-dereference",
+        "-c","${workspaceFolder}/src/j3a.cpp","-o","${workspaceFolder}/src/build/Debug/j3a.o"
+      ],
+      "options": { "cwd": "${workspaceFolder}" }
+    },
+    {
       "label": "runner-link-debug",
       "type": "shell",
       "command": "clang++",
       "args": [
-        "${workspaceFolder}/src/build/Debug/main.o","-o","${workspaceFolder}/src/build/Debug/outDebug",
+        "${workspaceFolder}/src/build/Debug/main.o","${workspaceFolder}/src/build/Debug/j3a.o","-o","${workspaceFolder}/src/build/Debug/outDebug",
         "-L/opt/homebrew/lib","-Wl,-rpath,/opt/homebrew/lib","-lglfw",
         "-framework","OpenGL","-framework","Cocoa","-framework","IOKit","-framework","CoreVideo"
       ],
@@ -53,7 +86,11 @@
     {
       "label": "runner-build-all",
       "dependsOrder": "sequence",
-      "dependsOn": ["runner-build-debug","runner-link-debug"]
+      "dependsOn": ["runner-build-debug","runner-build-j3a","runner-link-debug"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     },
     {
       "label": "run",
@@ -75,5 +112,3 @@
     }
   ]
 }
-
-

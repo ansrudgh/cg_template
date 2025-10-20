@@ -2,17 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug (lldb)",
+      "name": "Make Debug (lldb)",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/src/build/app",
+      "program": "${workspaceFolder}/src/build/Debug/outDebug",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
       "MIMode": "lldb",
       "miDebuggerPath": "lldb",
-      "preLaunchTask": "build-with-cc",
+      "preLaunchTask": "build",
       "externalConsole": false
     },
     {
@@ -22,14 +22,14 @@
       "program": "${workspaceFolder}/src/build/Debug/outDebug",
       "args": [],
       "cwd": "${workspaceFolder}",
-      "preLaunchTask": "runner-build-all"
+      "preLaunchTask": "build"
     },
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "${workspaceFolder}/src",
+      "cwd": "${workspaceFolder}",
       "program": "${workspaceFolder}/src/build/Debug/outDebug"
     }
   ]
