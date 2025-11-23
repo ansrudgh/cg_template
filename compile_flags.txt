@@ -6,3 +6,5 @@
 -DGLFW_INCLUDE_GLCOREARB
 -Wno-sign-conversion
 -Wno-error=sign-conversion
+-Wno-implicit-int-conversion
+-Wno-error
