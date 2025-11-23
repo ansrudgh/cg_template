@@ -5,7 +5,7 @@ OBJ_DIR := $(BUILD_DIR)/obj
 
 CXX := clang++
 CF := $(shell tr '\n' ' ' < compile_flags.txt)
-CXXFLAGS := $(CF) -Wall -Wextra -Werror -Wconversion -Wshadow -g
+CXXFLAGS := -Wall -Wextra -Wconversion -Wshadow -Werror -g $(CF)
 INCLUDES := -I/opt/homebrew/include -I$(SRC_DIR)
 LDFLAGS := -L/opt/homebrew/lib -Wl,-rpath,/opt/homebrew/lib
 LIBS := -lglfw -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
